@@ -1,0 +1,34 @@
+.board {
+  display: grid;
+  grid-gap: 0;
+}
+
+.cell {
+  border: 1px solid white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+
+  &:before, &:after {
+    display: block;
+    position: absolute;
+    font-size: 2rem;
+  }
+
+  &.hasKey:after {
+    top: 0; 
+    left: 0;
+    content: "🔑";
+  }
+
+  &.hasDecoded:before {
+    top: 0; 
+    right: 0;
+    content: "🔍";
+  }
+
+  &.shouldFlip {
+    color: green;
+  }
+}

@@ -5,11 +5,16 @@ html {
   color: $font-color;
   max-width: $page-width;
   line-height: 1.4;
+  height: 100%;
 }
 
 body {
+  height: 100%;
   margin: 0;
   width: 100vw;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 #root {
