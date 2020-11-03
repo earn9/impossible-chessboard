@@ -1,11 +1,15 @@
-// Scalable fonts for the coin (H,T,🔑,🔍)
-// Adapted from https://github.com/adactio/FitText.js
+/***
+
+Scalable fonts for the coin (H,T,🔑,🔍)
+Adapted from https://github.com/adactio/FitText.js
+
+***/
 
 const addEvent = function (el, type, fn) {
   if (el.addEventListener) { el.addEventListener(type, fn, false) } else { el.attachEvent('on' + type, fn) }
 }
 
-const fitText = function (el, kompressor, options) {
+export const fitText = function (el, kompressor, options) {
   var settings = {
     minFontSize: -1 / 0,
     maxFontSize: 1 / 0,
@@ -36,5 +40,3 @@ const fitText = function (el, kompressor, options) {
   // return set of elements
   return el
 }
-
-export { fitText }
