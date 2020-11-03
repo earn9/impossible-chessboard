@@ -1,3 +1,5 @@
+import { fitText } from './fittext'
+import './browserTweaks'
 import './styles/index.scss'
 
 const board = document.querySelector('.board')
@@ -71,6 +73,10 @@ const updateBoard = ({ decodedIndex, secretIndex, solutionIndex } = {}) => {
     cell.classList.toggle('hasDecoded', i === decodedIndex)
     cell.classList.toggle('hasKey', i === secretIndex)
     cell.classList.toggle('selected', i === solutionIndex)
+
+    // Hacky way to get fonts (including emojis) to resize for different screen sizes
+    fitText(cell, 0.3)
+    fitText(coin, 0.2)
   })
 }
 

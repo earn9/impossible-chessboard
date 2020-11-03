@@ -22,7 +22,6 @@
   &:before, &:after {
     display: block;
     position: absolute;
-    font-size: 2rem;
     z-index: 10;
   }
 
@@ -30,11 +29,16 @@
     top: 0; 
     left: 0;
     content: "🔑";
+
+    // Cheap little hack to get the Windows key emoji the same as other platforms!
+    .isWindows & {
+      transform: scaleX(-1);
+    }
   }
 
   &.hasDecoded:before {
-    top: 0; 
+    bottom: 0; 
     right: 0;
-    content: "🔍";
+    content: "🔎";
   }
 }
