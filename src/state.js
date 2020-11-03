@@ -32,6 +32,7 @@ export const decodeCells = () => state.cells.reduce(
     state.cells[i] === true
       ? prev ^ i // ✨
       : prev,
+  0,
 )
 
 export const getSolution = (currDecode, targetDecode) => currDecode ^ targetDecode
