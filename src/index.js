@@ -40,6 +40,8 @@ document.querySelector('#randomize').addEventListener('click', () => {
 })
 
 document.querySelector('#auto-solve').addEventListener('click', () => {
+  randomizeKey()
+  randomizeCells()
   flipCell(getSolution(decodeCells(), state.keyIndex))
   update()
 })
@@ -63,6 +65,15 @@ for (let i = 0; i < numGridOptions; i++) {
 gridSizeSelect.addEventListener('change', () => {
   updateRowSize(gridSizeSelect.value)
   init()
+})
+
+const filters = ['key', 'decoded', 'selected']
+
+filters.forEach(filter => {
+  const checkbox = document.querySelector(`#show-${filter}`)
+  const toggle = () => board.classList.toggle(`show-${filter}`, checkbox.checked)
+  checkbox.addEventListener('change', toggle)
+  toggle()
 })
 
 init()

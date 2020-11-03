@@ -16,11 +16,13 @@
   }
 
   &.selected {
-    background: #fce754;
+    .show-selected & {
+      background: #fce754;
+    }
   }
 
   &:before, &:after {
-    display: block;
+    display: none;
     position: absolute;
     z-index: 10;
   }
@@ -34,11 +36,19 @@
     .isWindows & {
       transform: scaleX(-1);
     }
+
+    .show-key & {
+      display: block;
+    }
   }
 
   &.hasDecoded:before {
     bottom: 0; 
     right: 0;
     content: "🔎";
+
+    .show-decoded & {
+      display: block;
+    }
   }
 }
