@@ -6,15 +6,16 @@ All the GUI stuff
 
 import { fitText } from './fittext'
 
-const longPressMs = 500
+const longPressMs = 300
+let isTouchDevice = false
 
 // Create chessboard in HTML
-export const createBoard = ({ board, rowSize, update, updateKey, cells, updateCell }) => {
+export const createBoard = ({ board, rowSize, update, updateKey, cells, flipCell }) => {
   let longPressTimer
   let didJustLongPress = false
 
   const numCells = cells.length
-  const cellWidth = 80 / rowSize
+  const cellWidth = 90 / rowSize
   board.style.gridTemplateRows = `repeat(${rowSize}, [row] ${cellWidth}vw)`
   board.style.gridTemplateColumns = `repeat(${rowSize}, [col] ${cellWidth}vw)`
 
@@ -34,22 +35,39 @@ export const createBoard = ({ board, rowSize, update, updateKey, cells, updateCe
     cell.append(coin)
     board.append(cell)
 
-    cell.addEventListener('mousedown', () => {
+    const onDown = () => {
       clearTimeout(longPressTimer)
       longPressTimer = setTimeout(() => {
         updateKey(i)
         update()
         didJustLongPress = true
       }, longPressMs)
-    })
+    }
 
-    cell.addEventListener('mouseup', () => {
+    const onUp = () => {
       if (!didJustLongPress) {
         clearTimeout(longPressTimer)
-        updateCell(i, !cells[i])
+        flipCell(i)
         update()
       }
       didJustLongPress = false
+    }
+
+    cell.addEventListener('touchstart', () => {
+      isTouchDevice = true
+      onDown()
+    })
+    cell.addEventListener('touchend', onUp)
+
+    cell.addEventListener('mousedown', () => {
+      if (!isTouchDevice) {
+        onDown()
+      }
+    })
+    cell.addEventListener('mouseup', () => {
+      if (!isTouchDevice) {
+        onUp()
+      }
     })
   }
 }
