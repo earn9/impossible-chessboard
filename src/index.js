@@ -15,12 +15,24 @@ board.style.gridTemplateColumns = `repeat(${rowSize}, [col] ${cellWidth}vw)`
 
 for (let i = 0; i < numCells; i++) {
   const cell = document.createElement('div')
+  const coin = document.createElement('div')
   cell.classList.add('cell')
+  coin.classList.add('coin')
+
+  // Colour the cells like a chessboard
+  // This is not as simple as doing a mod 2, that results in stripes
+  const rowNum = Math.floor(i / rowSize)
+  if (i % 2 !== rowNum % 2) {
+    cell.classList.add('dark')
+  }
+
+  cell.append(coin)
+  board.append(cell)
+
   cell.addEventListener('click', () => {
     cells[i] = !cells[i]
     update()
   })
-  board.append(cell)
 }
 
 const randomizeCells = () => {
@@ -52,12 +64,13 @@ const getSolution = (currDecode, targetDecode) => currDecode ^ targetDecode
 const updateBoard = ({ decodedIndex, secretIndex, solutionIndex } = {}) => {
   document.querySelectorAll('.cell').forEach((cell, i) => {
     // Give cells heads/tails label
-    cell.textContent = cells[i] === true ? 'H' : 'T'
+    const coin = cell.querySelector('.coin')
+    coin.classList.toggle('isHead', cells[i] === true)
 
     // Style cells accordingly
     cell.classList.toggle('hasDecoded', i === decodedIndex)
     cell.classList.toggle('hasKey', i === secretIndex)
-    cell.classList.toggle('shouldFlip', i === solutionIndex)
+    cell.classList.toggle('selected', i === solutionIndex)
   })
 }
 

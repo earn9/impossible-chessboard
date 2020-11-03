@@ -1,19 +1,29 @@
 .board {
   display: grid;
   grid-gap: 0;
+  box-shadow: 5px 5px 5px rgba(0,0,0,0.3);
 }
 
 .cell {
-  border: 1px solid white;
+  background: #CCCCCC;
   display: flex;
   justify-content: center;
   align-items: center;
   position: relative;
 
+  &.dark {
+    background: #555555;
+  }
+
+  &.selected {
+    background: #fce754;
+  }
+
   &:before, &:after {
     display: block;
     position: absolute;
     font-size: 2rem;
+    z-index: 10;
   }
 
   &.hasKey:after {
@@ -26,9 +36,5 @@
     top: 0; 
     right: 0;
     content: "🔍";
-  }
-
-  &.shouldFlip {
-    color: green;
   }
 }
