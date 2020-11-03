@@ -6,9 +6,13 @@ const board = document.querySelector('.board')
 
 const rowSize = 8
 const numCells = Math.pow(rowSize, 2)
+const longPressMs = 500
 
 let cells = []
 let keyIndex = 0
+
+let longPressTimer
+let didJustLongPress = false
 
 // Create chessboard in HTML
 const cellWidth = 80 / rowSize
@@ -31,9 +35,22 @@ for (let i = 0; i < numCells; i++) {
   cell.append(coin)
   board.append(cell)
 
-  cell.addEventListener('click', () => {
-    cells[i] = !cells[i]
-    update()
+  cell.addEventListener('mousedown', () => {
+    clearTimeout(longPressTimer)
+    longPressTimer = setTimeout(() => {
+      keyIndex = i
+      update()
+      didJustLongPress = true
+    }, longPressMs)
+  })
+
+  cell.addEventListener('mouseup', () => {
+    if (!didJustLongPress) {
+      clearTimeout(longPressTimer)
+      cells[i] = !cells[i]
+      update()
+    }
+    didJustLongPress = false
   })
 }
 
