@@ -4,21 +4,25 @@ export const state = {
   rowSize: 8,
 }
 
-const numCells = Math.pow(state.rowSize, 2)
+export const getNumCells = () => Math.pow(state.rowSize, 2)
 
 export const randomizeCells = () => {
   state.cells = []
-  for (let i = 0; i < numCells; i++) {
+  for (let i = 0; i < getNumCells(); i++) {
     state.cells[i] = Math.random() > 0.5
   }
 }
 
 export const randomizeKey = () => {
-  state.keyIndex = Math.floor(Math.random() * numCells)
+  state.keyIndex = Math.floor(Math.random() * getNumCells())
 }
 
 export const updateKey = i => {
   state.keyIndex = i
+}
+
+export const updateRowSize = r => {
+  state.rowSize = r
 }
 
 export const flipCell = (i) => {

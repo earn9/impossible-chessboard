@@ -11,6 +11,8 @@ let isTouchDevice = false
 
 // Create chessboard in HTML
 export const createBoard = ({ board, rowSize, update, updateKey, cells, flipCell }) => {
+  board.innerHTML = ''
+
   let longPressTimer
   let didJustLongPress = false
 
