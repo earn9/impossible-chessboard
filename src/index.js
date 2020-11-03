@@ -32,7 +32,7 @@ const updateCell = (i, value) => {
 const decodeCells = () => cells.reduce(
   (prev, curr, i) =>
     cells[i] === true
-      ? prev ^ i
+      ? prev ^ i // ✨
       : prev,
 )
 
@@ -40,8 +40,6 @@ const getSolution = (currDecode, targetDecode) => currDecode ^ targetDecode
 
 const update = () => {
   const decodedIndex = decodeCells()
-
-  console.log(decodedIndex)
 
   updateBoard({
     board,
