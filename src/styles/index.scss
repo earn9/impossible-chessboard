@@ -2,3 +2,54 @@
 @import 'scaffolding';
 @import 'board';
 @import 'coin';
+
+.instruction {
+    font-size: 0.8rem;
+    text-align: center;
+}
+
+.wrapper {
+  padding: 1rem 0;
+  max-width: 1400px;
+}
+
+.main-row {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+@include desktop {
+  .main-row {
+    display: flex;
+    padding: 1rem;
+    flex-direction: row;
+  }
+  
+  .main-col {
+    margin: 0 1rem;
+    display: flex;
+    flex-direction: column;
+  }
+
+  
+  .margin-adjust {
+    @include desktop {
+      margin-bottom: 3rem;
+    }
+  }
+}
+
+.controls {
+  order: 1;
+}
+
+.content {
+  max-width: 80vw;
+  margin: 0 auto;
+  text-align: center;
+  order: 0;
+}
+
+

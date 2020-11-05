@@ -9,25 +9,56 @@
   </head>
 
   <body>
-    <div class="board"></div>
-    <div class="controls">
-      <button id="randomize">Randomize</button>
-      <button id="auto-solve">Randomize (Solved)</button>
-      <label for="grid-size">Grid Size:</label>
-      <select id="grid-size">
-      </select>
-
-      <input id="show-key" type="checkbox" checked />
-      <label for="show-key">Show Key</label>
+    <div class="wrapper">
+      <h1 class="main-title"><%= htmlWebpackPlugin.options.title %></h1>
+    
+      <div class="main-row">
+        <div class="main-col">
+          <div class="board"></div>
+          <p class="instruction">Click/Tap to flip coins. Hold down to place key.</p>
+        </div>
+        <div class="main-col">
+          <div class="controls">
+  
+            <h3>Controls:</h3>
+            <div class="row">
+              <button id="randomize">Randomize</button>
+              <button id="auto-solve">Randomize (Solved)</button>
+              <div>
+                <label for="grid-size">Grid Size:</label>
+                <select id="grid-size"></select>
+              </div>
+            </div>
       
-
-      <input id="show-decoded" type="checkbox" />
-      <label for="show-decoded">Show Current Decode</label>
-      
-
-      <input id="show-selected" type="checkbox" />
-      <label for="show-selected">Show Coin to Flip</label>
-      
+            <h3 class="no-margin">Show:</h3>
+            <div class="row margin-adjust">
+              <div>
+                <input id="show-key" type="checkbox" checked />
+                <label for="show-key">Key</label>
+              </div>
+              <div>
+                <input id="show-decoded" type="checkbox" />
+            <label for="show-decoded">Current Decode</label>
+              </div>
+              <div>
+                <input id="show-selected" type="checkbox" />
+                <label for="show-selected">Coin to Flip</label>
+              </div>
+            </div>
+          </div>
+                
+          <div class="content">
+            <h2>What is this?</h2>
+            <p>This is a sandbox / solver for The Impossible Chessboard Puzzle. I first
+              heard about this puzzle on the YouTube channel, 
+              <a href="https://www.youtube.com/c/3blue1brown/">3Blue1Brown</a>. I'd recommend watching
+              <a href="https://www.youtube.com/watch?v=wTJI_WuZSwE&t=14s">that video</a> if you haven't already!
+            </p>
+            <p>If you're interested in how this thing is made, check out the <a href="https://github.com/funwithtriangles/impossible-chessboard">source code</a> on Github.</p>
+          </div>
+        </div>
+      </div>
     </div>
+ 
   </body>
 </html>

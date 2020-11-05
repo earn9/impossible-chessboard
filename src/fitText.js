@@ -19,8 +19,13 @@ export const fitText = function (el, kompressor, options) {
   var fit = function (el) {
     var compressor = kompressor || 1
 
+    let debounceTimer
+
     var resizer = function () {
-      el.style.fontSize = Math.max(Math.min(el.clientWidth / (compressor * 10), parseFloat(settings.maxFontSize)), parseFloat(settings.minFontSize)) + 'px'
+      clearTimeout(debounceTimer)
+      setTimeout(() => {
+        el.style.fontSize = Math.max(Math.min(el.clientWidth / (compressor * 10), parseFloat(settings.maxFontSize)), parseFloat(settings.minFontSize)) + 'px'
+      }, 50)
     }
 
     // Call once to set.

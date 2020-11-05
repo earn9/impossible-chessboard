@@ -17,9 +17,33 @@ export const createBoard = ({ board, rowSize, update, updateKey, cells, flipCell
   let didJustLongPress = false
 
   const numCells = cells.length
-  const cellWidth = 90 / rowSize
-  board.style.gridTemplateRows = `repeat(${rowSize}, [row] ${cellWidth}vw)`
-  board.style.gridTemplateColumns = `repeat(${rowSize}, [col] ${cellWidth}vw)`
+
+  const updateStyle = () => {
+    let cellWidth
+    let v
+
+    if (window.innerWidth > 1224) {
+      cellWidth = 70 / rowSize
+      v = 'vh'
+    } else if (window.innerWidth > 1023) {
+      cellWidth = 50 / rowSize
+      v = 'vh'
+    } else if (window.innerWidth > 600) {
+      cellWidth = 70 / rowSize
+      v = 'vw'
+    } else {
+      cellWidth = 90 / rowSize
+      v = 'vw'
+    }
+
+    board.style.gridTemplateRows = `repeat(${rowSize}, [row] ${cellWidth}${v})`
+    board.style.gridTemplateColumns = `repeat(${rowSize}, [col] ${cellWidth}${v})`
+  }
+
+  window.addEventListener('resize', updateStyle)
+  window.addEventListener('orientationchange', updateStyle)
+
+  updateStyle()
 
   for (let i = 0; i < numCells; i++) {
     const cell = document.createElement('div')

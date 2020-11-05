@@ -2,6 +2,7 @@ import { createBoard, updateBoard } from './board'
 import { state, decodeCells, flipCell, updateKey, getSolution, randomizeCells, randomizeKey, updateRowSize } from './state'
 import './browserTweaks'
 import './styles/index.scss'
+import { fitText } from './fitText'
 
 const board = document.querySelector('.board')
 
@@ -67,6 +68,7 @@ gridSizeSelect.addEventListener('change', () => {
   init()
 })
 
+// Filter functionality
 const filters = ['key', 'decoded', 'selected']
 
 filters.forEach(filter => {
@@ -75,5 +77,8 @@ filters.forEach(filter => {
   checkbox.addEventListener('change', toggle)
   toggle()
 })
+
+// Style header
+fitText(document.querySelector('.main-title'), 2)
 
 init()

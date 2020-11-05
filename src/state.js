@@ -31,12 +31,13 @@ export const flipCell = (i) => {
 
 // Find secret index of warden's key by doing XOR on all indexes with true cells (heads)
 // How this works: https://www.youtube.com/watch?v=b3NxrZOu_CE&t=352s
-export const decodeCells = () => state.cells.reduce(
-  (prev, curr, i) =>
-    state.cells[i] === true
-      ? prev ^ i // ✨
-      : prev,
-  0,
-)
+export const decodeCells = () =>
+  state.cells.reduce(
+    (prev, curr, i) =>
+      state.cells[i] === true
+        ? prev ^ i // ✨
+        : prev,
+    0,
+  )
 
 export const getSolution = (currDecode, targetDecode) => currDecode ^ targetDecode
