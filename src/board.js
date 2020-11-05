@@ -4,7 +4,7 @@ All the GUI stuff
 
 ***/
 
-import { fitText } from './fittext'
+import { fitText } from './fitText'
 
 const longPressMs = 300
 let isTouchDevice = false
