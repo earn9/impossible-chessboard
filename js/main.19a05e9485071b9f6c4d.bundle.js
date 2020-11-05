@@ -13,12 +13,12 @@ if (isWindows) {
 
 /***/ }),
 
-/***/ 530:
+/***/ 679:
 /***/ ((__unused_webpack_module, __unused_webpack___webpack_exports__, __webpack_require__) => {
 
 "use strict";
 
-// CONCATENATED MODULE: ./src/fittext.js
+// CONCATENATED MODULE: ./src/fitText.js
 function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
 
 function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
@@ -262,64 +262,6 @@ var update = injectStylesIntoStyleTag_default()(styles/* default */.Z, options);
 
 
 /* harmony default export */ const src_styles = (styles/* default.locals */.Z.locals || {});
-// CONCATENATED MODULE: ./src/fitText.js
-function fitText_ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
-
-function fitText_objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { fitText_ownKeys(Object(source), true).forEach(function (key) { fitText_defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { fitText_ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
-
-function fitText_defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
-
-/***
-
-Scalable fonts for the coin (H,T,🔑,🔍)
-Adapted from https://github.com/adactio/FitText.js
-
-***/
-var fitText_addEvent = function addEvent(el, type, fn) {
-  if (el.addEventListener) {
-    el.addEventListener(type, fn, false);
-  } else {
-    el.attachEvent('on' + type, fn);
-  }
-};
-
-var fitText_fitText = function fitText(el, kompressor, options) {
-  var settings = fitText_objectSpread({
-    minFontSize: -1 / 0,
-    maxFontSize: 1 / 0
-  }, options);
-
-  var fit = function fit(el) {
-    var compressor = kompressor || 1;
-    var debounceTimer;
-
-    var resizer = function resizer() {
-      clearTimeout(debounceTimer);
-      setTimeout(function () {
-        el.style.fontSize = Math.max(Math.min(el.clientWidth / (compressor * 10), parseFloat(settings.maxFontSize)), parseFloat(settings.minFontSize)) + 'px';
-      }, 50);
-    }; // Call once to set.
-
-
-    resizer(); // Bind events
-    // If you have any js library which support Events, replace this part
-    // and remove addEvent function (or use original jQuery version)
-
-    fitText_addEvent(window, 'resize', resizer);
-    fitText_addEvent(window, 'orientationchange', resizer);
-  };
-
-  if (el.length) {
-    for (var i = 0; i < el.length; i++) {
-      fit(el[i]);
-    }
-  } else {
-    fit(el);
-  } // return set of elements
-
-
-  return el;
-};
 // CONCATENATED MODULE: ./src/index.js
 
 
@@ -395,7 +337,7 @@ filters.forEach(function (filter) {
   toggle();
 }); // Style header
 
-fitText_fitText(document.querySelector('.main-title'), 2);
+fitText(document.querySelector('.main-title'), 2);
 init();
 
 /***/ }),
@@ -812,4 +754,4 @@ module.exports = function (list, options) {
 /***/ })
 
 },
-0,[[530,666]]]);
+0,[[679,666]]]);
