@@ -40,3 +40,11 @@ You can view the deploy by creating a server in `dist`.
 ```bash
 cd dist && http-server
 ```
+
+### Deploy
+
+After building, you can deploy to Github pages.
+
+```bash
+npm run deploy
+```
